@@ -132,9 +132,8 @@
     .job-role { color: var(--red-light); font-size: 12px; margin-top: 5px; }
     .job-date { color: #888288; font-size: 11px; white-space: nowrap; }
     .job p { color: #aaa4a8; font-size: 13px; line-height: 1.62; margin: 17px 0 0; }
-    .documents { padding: 78px 0 84px; }
     .document-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .document-card { display: flex; flex-direction: column; align-items: stretch; min-height: 250px; padding: 25px 24px; border: 1px solid var(--line); border-radius: 10px; background: linear-gradient(135deg, rgba(255,41,56,.09), rgba(255,255,255,.02) 55%); }
+    .document-card { display: flex; flex-direction: column; align-items: stretch; min-height: 190px; padding: 16px; border: 1px solid var(--line); border-radius: 10px; background: linear-gradient(135deg, rgba(255,41,56,.09), rgba(255,255,255,.02) 55%); }
     .document-card h3 { margin: 12px 0 8px; font: 600 23px/1.2 "Exo 2", "Manrope", sans-serif; letter-spacing: -.04em; }
     .document-card p { margin: 0; color: #c3bdc0; font-size: 14px; line-height: 1.7; }
     .document-card .button { align-self: flex-start; width: 240px; margin-top: auto; }
@@ -236,7 +235,7 @@
       .service h3 { margin-top: 12px; }
       .projects { padding-block: 62px; }
       .document-grid { grid-template-columns: 1fr; }
-      .document-card { min-height: 0; padding: 20px 17px; }
+      .document-card { min-height: 0; padding: 15px; }
       .document-card .button { width: 100%; margin-top: 20px; }
       .project-card { padding: 19px 16px; }
       .skill { min-height: 145px; padding: 16px 14px; }
@@ -302,22 +301,23 @@
             <div class="fact"><strong>4,9</strong><span>рейтинг заведения в 2GIS и Яндекс Картах</span></div>
             <div class="fact"><strong>10+ лет</strong><span>практического опыта в разных сферах</span></div>
           </div>
+          <div class="document-grid">
+            <article class="document-card">
+              <span class="project-meta">Портфолио</span>
+              <h3>Моё портфолио</h3>
+              <p>Услуги, кейсы, инструменты, обучение и контакты — в одном документе.</p>
+              <button class="button" id="open-portfolio-modal" type="button" aria-haspopup="dialog" aria-controls="portfolio-modal">Посмотреть портфолио</button>
+            </article>
+            <article class="document-card">
+              <span class="project-meta">Коммерческое предложение</span>
+              <h3>Предложение для мототуризма</h3>
+              <p><span class="document-note">Учебный пример — не реальный заказ</span><br>Образец с этапами работы, сроками, стоимостью и условиями.</p>
+              <button class="button" id="open-proposal-modal" type="button" aria-haspopup="dialog" aria-controls="proposal-modal">Посмотреть предложение</button>
+            </article>
+          </div>
         </div>
       </div>
-        <div class="document-grid">
-          <article class="document-card">
-            <span class="project-meta">Портфолио</span>
-            <h3>Моё портфолио</h3>
-            <p>Услуги, кейсы, инструменты, обучение и контакты — в одном документе.</p>
-            <button class="button" id="open-portfolio-modal" type="button" aria-haspopup="dialog" aria-controls="portfolio-modal">Посмотреть портфолио</button>
-          </article>
-          <article class="document-card">
-            <span class="project-meta">Коммерческое предложение</span>
-            <h3>Предложение для мототуризма</h3>
-            <p><span class="document-note">Учебный пример — не реальный заказ</span><br>Образец с этапами работы, сроками, стоимостью и условиями.</p>
-            <button class="button" id="open-proposal-modal" type="button" aria-haspopup="dialog" aria-controls="proposal-modal">Посмотреть предложение</button>
-          </article>
-        </div>
+
     </section>
     <section class="section" id="skills">
       <div class="wrap skills">
