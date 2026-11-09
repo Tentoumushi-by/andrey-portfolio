@@ -148,28 +148,31 @@
     .document-close { width: 40px; height: 40px; flex: 0 0 40px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 7px; background: rgba(255,255,255,.04); color: var(--text); font: 26px/1 "Manrope", sans-serif; cursor: pointer; transition: background .2s, border-color .2s; }
     .document-close:hover, .document-close:focus-visible { border-color: rgba(255,41,56,.6); background: rgba(255,41,56,.12); outline: none; }
     .document-dialog-body { overflow: auto; overscroll-behavior: contain; padding: 28px clamp(20px, 5vw, 56px) 42px; }
-    .portfolio-doc { max-width: 720px; margin-inline: auto; color: #e5e1e3; font-size: 15px; line-height: 1.75; overflow-wrap: anywhere; }
-    .portfolio-doc h3 { margin: 0; color: var(--text); font: 700 clamp(24px, 4vw, 34px)/1.15 "Exo 2", "Manrope", sans-serif; letter-spacing: -.04em; }
-    .portfolio-doc .doc-subtitle { display: block; margin-top: 7px; color: var(--red-light); font-size: 16px; font-weight: 650; }
-    .portfolio-doc .doc-contact { margin-top: 16px; color: var(--muted); font-size: 13px; line-height: 1.8; }
-    .portfolio-doc .doc-separator { height: 1.7em; margin: 7px 0; overflow: hidden; color: rgba(255,255,255,.25); font-family: "IBM Plex Mono", monospace; line-height: 1.7em; white-space: nowrap; }
-    .portfolio-doc h4 { margin: 20px 0 8px; color: var(--red-light); font: 700 14px/1.4 "IBM Plex Mono", monospace; letter-spacing: .045em; }
-    .portfolio-doc p { margin: 0 0 10px; }
-    .portfolio-doc ul { margin: 5px 0 12px; padding-left: 23px; }
-    .portfolio-doc li { margin: 4px 0; padding-left: 2px; }
-    .portfolio-doc a { color: var(--red-light); text-decoration: underline; text-decoration-color: rgba(255,89,100,.45); text-underline-offset: 3px; }
-    .portfolio-doc a:hover { color: #fff; text-decoration-color: currentColor; }
-    .portfolio-doc .doc-case { margin: 6px 0 12px; }
-    .portfolio-doc .doc-thanks { margin-top: 12px; font-weight: 650; }
+    .document-copy { max-width: 720px; margin-inline: auto; color: #e5e1e3; font-size: 15px; line-height: 1.75; overflow-wrap: anywhere; }
+    .document-copy h3 { margin: 0; color: var(--text); font: 700 clamp(24px, 4vw, 34px)/1.15 "Exo 2", "Manrope", sans-serif; letter-spacing: -.04em; }
+    .document-copy .doc-subtitle { display: block; margin-top: 7px; color: var(--red-light); font-size: 16px; font-weight: 650; }
+    .document-copy .doc-contact { margin-top: 16px; color: var(--muted); font-size: 13px; line-height: 1.8; }
+    .document-copy .doc-separator { height: 1.7em; margin: 7px 0; overflow: hidden; color: rgba(255,255,255,.25); font-family: "IBM Plex Mono", monospace; line-height: 1.7em; white-space: nowrap; }
+    .document-copy h4 { margin: 20px 0 8px; color: var(--red-light); font: 700 14px/1.4 "IBM Plex Mono", monospace; letter-spacing: .045em; }
+    .document-copy p { margin: 0 0 10px; }
+    .document-copy ul { margin: 5px 0 12px; padding-left: 23px; }
+    .document-copy li { margin: 4px 0; padding-left: 2px; }
+    .document-copy a { color: var(--red-light); text-decoration: underline; text-decoration-color: rgba(255,89,100,.45); text-underline-offset: 3px; }
+    .document-copy a:hover { color: #fff; text-decoration-color: currentColor; }
+    .document-copy .doc-case { margin: 6px 0 12px; }
+    .document-copy .doc-thanks { margin-top: 12px; font-weight: 650; }
+    .document-copy .proposal-disclaimer { margin: 14px 0; padding: 11px 14px; border: 1px solid rgba(255,41,56,.35); border-radius: 7px; background: rgba(255,41,56,.08); color: var(--red-light); font-weight: 750; letter-spacing: .035em; }
+    .document-copy .proposal-price { color: var(--red-light); font-weight: 750; }
+
     @media (max-width: 560px) {
       .document-modal { align-items: flex-end; padding: 0; }
       .document-dialog { width: 100%; max-height: 94vh; max-height: 94dvh; border-radius: 14px 14px 0 0; }
       .document-dialog-header { padding: 13px 17px; }
       .document-dialog-header h2 { font-size: 18px; }
       .document-dialog-body { padding: 21px 18px 34px; }
-      .portfolio-doc { font-size: 14px; line-height: 1.72; }
-      .portfolio-doc .doc-contact { font-size: 12px; }
-      .portfolio-doc h4 { font-size: 12px; }
+      .document-copy { font-size: 14px; line-height: 1.72; }
+      .document-copy .doc-contact { font-size: 12px; }
+      .document-copy h4 { font-size: 12px; }
     }
     .education { padding: 68px 0 74px; background: transparent; }
     .edu-brand { width: 54px; height: 44px; flex: 0 0 54px; display: grid; place-items: center; overflow: hidden; border: 1px solid var(--line); border-radius: 7px; background: #fff; }
@@ -345,14 +348,14 @@
             <span class="project-meta">Портфолио</span>
             <h3>Моё портфолио</h3>
             <p>Услуги, кейсы, инструменты, обучение и контакты — в одном документе.</p>
-            <button class="button" id="open-portfolio-modal" type="button" aria-haspopup="dialog" aria-controls="portfolio-modal">Посмотреть портфолио <span aria-hidden="true">↗</span></button>
+            <button class="button" id="open-portfolio-modal" type="button" aria-haspopup="dialog" aria-controls="portfolio-modal">Посмотреть портфолио</button>
           </article>
           <article class="document-card">
             <span class="project-meta">Коммерческое предложение</span>
             <h3>Предложение для мототуризма</h3>
             <span class="document-note">Учебный пример — не реальный заказ</span>
             <p>Образец с этапами работы, сроками, стоимостью и условиями.</p>
-            <button class="button" type="button" disabled aria-disabled="true">Посмотреть предложение <span aria-hidden="true">↗</span></button>
+            <button class="button" id="open-proposal-modal" type="button" aria-haspopup="dialog" aria-controls="proposal-modal">Посмотреть предложение</button>
           </article>
         </div>
       </div>
@@ -383,7 +386,7 @@
         <button class="document-close" type="button" aria-label="Закрыть портфолио">×</button>
       </header>
       <div class="document-dialog-body">
-        <article class="portfolio-doc">
+        <article class="document-copy">
           <h3>АНДРЕЙ ЯЩЕНКО</h3>
           <span class="doc-subtitle">Начинающий специалист по AI-инструментам и цифровому контенту</span>
           <p class="doc-contact">📞 Телефон: +7 988 139-73-32&nbsp; | &nbsp;📧 Email: ayashenko49@gmail.com&nbsp; | &nbsp;💬 Telegram: @admiralnemo&nbsp; | &nbsp;📍 Геленджик</p>
@@ -435,61 +438,169 @@
       </div>
     </section>
   </div>
+  <div class="document-modal" id="proposal-modal" hidden>
+    <section class="document-dialog" role="dialog" aria-modal="true" aria-labelledby="proposal-modal-title" tabindex="-1">
+      <header class="document-dialog-header">
+        <h2 id="proposal-modal-title">Коммерческое предложение</h2>
+        <button class="document-close" type="button" aria-label="Закрыть коммерческое предложение">×</button>
+      </header>
+      <div class="document-dialog-body">
+        <article class="document-copy">
+          <h3>КОММЕРЧЕСКОЕ ПРЕДЛОЖЕНИЕ</h3>
+          <span class="doc-subtitle">Создание сайта для бизнеса в сфере мототуризма</span>
+          <p class="proposal-disclaimer">УЧЕБНЫЙ ПРИМЕР · НЕ РЕАЛЬНЫЙ ЗАКАЗ</p>
+          <p>Компания, её задача, сроки и стоимость в этом документе придуманы для выполнения учебного задания. Это демонстрационный образец коммерческого предложения, а не подтверждённая договорённость с клиентом.</p>
+          <p class="doc-contact">ДЛЯ: ООО «МотоТур Геленджик»<br>ОТ: Андрей Ященко · начинающий специалист по AI-инструментам<br>ДАТА: 07 ноября 2026 года<br>ТЕМА: разработка простого сайта</p>
+
+          <h4>🏢 О ВАС</h4>
+          <p>В рамках учебного примера рассматриваем компанию «МотоТур Геленджик» — условный бизнес, который организует мотопрогулки и экскурсионные маршруты для гостей города. Потенциальным клиентам важно быстро понять, какие поездки доступны, как они проходят и каким образом оставить заявку. Сейчас компании нужен понятный онлайн-ресурс, где вся основная информация собрана в одном месте.</p>
+
+          <h4>🎯 ВАША ЗАДАЧА</h4>
+          <p>По условиям учебного сценария, компании требуется простой сайт-презентация. Посетитель должен увидеть направления поездок, ознакомиться с описанием услуг и найти контакты для связи. Сайт должен корректно отображаться на компьютере и смартфоне, иметь ясную структуру и не перегружать пользователя лишней информацией.</p>
+
+          <h4>💡 МОЁ РЕШЕНИЕ</h4>
+          <p>Предлагаю подготовить компактный многостраничный сайт с понятной навигацией и адаптацией под мобильные устройства.</p>
+          <p><strong>ЭТАП 1 · Структура и подготовка</strong></p>
+          <ul>
+            <li>Согласовать список страниц, содержание и основные блоки.</li>
+            <li>Подготовить тексты и подобрать предоставленные заказчиком материалы.</li>
+          </ul>
+          <p>2 дня</p>
+          <p><strong>ЭТАП 2 · Создание сайта</strong></p>
+          <ul>
+            <li>Собрать страницы услуг, добавить изображения и контактную информацию.</li>
+            <li>Настроить навигацию и базовое отображение на мобильных устройствах.</li>
+          </ul>
+          <p>3 дня</p>
+          <p><strong>ЭТАП 3 · Проверка и передача</strong></p>
+          <ul>
+            <li>Проверить ссылки, отображение страниц и исправить согласованные недочёты.</li>
+            <li>Передать готовые файлы сайта и краткую инструкцию по дальнейшему использованию.</li>
+          </ul>
+          <p>2 дня</p>
+
+          <h4>📦 РЕЗУЛЬТАТ</h4>
+          <p>Ориентировочный срок выполнения — 7 рабочих дней после согласования структуры и получения материалов.</p>
+          <ul>
+            <li>Готовый сайт-презентация с главной страницей и разделами услуг.</li>
+            <li>Адаптированная мобильная версия для основных размеров экранов.</li>
+            <li>Контактный блок и понятная навигация по разделам.</li>
+          </ul>
+
+          <div class="doc-separator" aria-hidden="true">────────────────────────────────────────────────────────</div>
+          <h3>КОММЕРЧЕСКОЕ ПРЕДЛОЖЕНИЕ</h3>
+          <span class="doc-subtitle">Продолжение · ООО «МотоТур Геленджик»</span>
+
+          <h4>🧩 ЧТО ВХОДИТ В РАБОТУ</h4>
+          <ul>
+            <li>Разработка структуры и навигации сайта.</li>
+            <li>Создание до 4 информационных страниц/разделов.</li>
+            <li>Подготовка и размещение текстов на основе информации заказчика.</li>
+            <li>Размещение до 10 предоставленных заказчиком изображений.</li>
+            <li>Базовая адаптация под смартфоны и планшеты.</li>
+            <li>Проверка ссылок и контактных элементов перед передачей.</li>
+          </ul>
+
+          <h4>🚫 ЧТО НЕ ВХОДИТ В РАБОТУ</h4>
+          <ul>
+            <li>Покупка домена, хостинга и платных сервисов.</li>
+            <li>Профессиональная фотосъёмка, создание логотипа и фирменного стиля.</li>
+            <li>Настройка онлайн-оплаты, CRM, личного кабинета и сложных интеграций.</li>
+            <li>Постоянное ведение сайта и последующее обновление контента.</li>
+          </ul>
+
+          <h4>💰 СТОИМОСТЬ</h4>
+          <p class="proposal-price">ОБЩАЯ СТОИМОСТЬ · УЧЕБНАЯ ОЦЕНКА</p>
+          <p><strong>18 000 ₽</strong> за объём работ, перечисленный в этом предложении. Сумма приведена только для учебного примера и не является действующим прайсом или публичной офертой.</p>
+          <p>Предлагаемый порядок оплаты в рамках сценария:</p>
+          <ul>
+            <li>50% — после согласования технического задания и перед началом работ.</li>
+            <li>50% — после демонстрации и передачи согласованного результата.</li>
+          </ul>
+
+          <h4>🛡️ УСЛОВИЯ И ОТВЕТСТВЕННОСТЬ</h4>
+          <ul>
+            <li>До начала работы стороны согласуют состав страниц, материалы и критерии приёмки.</li>
+            <li>В стоимость включён один общий раунд корректировок по согласованному техническому заданию.</li>
+            <li>Изменение объёма работ и дополнительные функции оцениваются отдельно до их выполнения.</li>
+          </ul>
+          <p>Диплом и профессиональная сертификация не заявляются: обучение Андрея по направлению «Оператор ИИ» находится в процессе. Условия договора, гарантий и возврата оплаты должны быть отдельно согласованы до заключения реального соглашения.</p>
+
+          <h4>👤 КОРОТКО ОБО МНЕ</h4>
+          <p>Андрей Ященко — начинающий специалист по AI-инструментам и цифровому контенту. Изучаю применение нейросетей для подготовки текстов, изображений и создания простых сайтов. В работе использую ChatGPT, DeepSeek, Dreamina, Wan2GP и Codex. Открыт к небольшим проектам, стажировкам и обратной связи.</p>
+          <p><strong>Практические проекты:</strong></p>
+          <ul>
+            <li>Личное портфолио — демонстрация структуры и оформления сайта: <a href="https://tentoumushi-by.github.io/andrey-portfolio/" target="_blank" rel="noopener noreferrer">https://tentoumushi-by.github.io/andrey-portfolio/</a></li>
+            <li>«Вика — мотодевушка · Геленджик» — учебный сайт с разделами о мотопрогулках, мотосессиях и SUP-сёрфинге: <a href="https://tentoumushi-by.github.io/vika-gelendzhik/" target="_blank" rel="noopener noreferrer">https://tentoumushi-by.github.io/vika-gelendzhik/</a></li>
+          </ul>
+
+          <h4>➡️ СЛЕДУЮЩИЙ ШАГ</h4>
+          <p>Если бы это предложение было актуально для реального клиента, следующим шагом стало бы обсуждение структуры сайта, материалов и технического задания. После согласования объёма работ можно было бы зафиксировать сроки, стоимость и условия в договоре.</p>
+
+          <h4>КОНТАКТЫ</h4>
+          <p>📞 <a href="tel:+79881397332">+7 988 139-73-32</a>&nbsp; | &nbsp;📧 <a href="mailto:ayashenko49@gmail.com">ayashenko49@gmail.com</a>&nbsp; | &nbsp;💬 Telegram: <a href="https://t.me/admiralnemo" target="_blank" rel="noopener noreferrer">@admiralnemo</a></p>
+          <p class="doc-thanks">Спасибо за рассмотрение предложения!</p>
+          <p>Андрей Ященко</p>
+        </article>
+      </div>
+    </section>
+  </div>
   <script>
     (() => {
-      const modal = document.getElementById("portfolio-modal");
-      const openButton = document.getElementById("open-portfolio-modal");
-      const closeButton = modal.querySelector(".document-close");
-      const dialog = modal.querySelector('[role="dialog"]');
-      let returnFocusTo = null;
+      document.querySelectorAll(".document-modal").forEach((modal) => {
+        const openButton = document.querySelector('[aria-controls="' + modal.id + '"]');
+        const closeButton = modal.querySelector(".document-close");
+        const dialog = modal.querySelector('[role="dialog"]');
+        let returnFocusTo = null;
 
-      const getFocusable = () => Array.from(
-        dialog.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])')
-      ).filter((element) => !element.hasAttribute("hidden") && element.getAttribute("aria-hidden") !== "true");
+        const getFocusable = () => Array.from(
+          dialog.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])')
+        ).filter((element) => !element.hasAttribute("hidden") && element.getAttribute("aria-hidden") !== "true");
 
-      const openModal = () => {
-        returnFocusTo = document.activeElement;
-        modal.hidden = false;
-        document.body.classList.add("modal-open");
-        closeButton.focus();
-      };
+        const openModal = () => {
+          returnFocusTo = document.activeElement;
+          modal.hidden = false;
+          document.body.classList.add("modal-open");
+          closeButton.focus();
+        };
 
-      const closeModal = () => {
-        if (modal.hidden) return;
-        modal.hidden = true;
-        document.body.classList.remove("modal-open");
-        if (returnFocusTo && typeof returnFocusTo.focus === "function") returnFocusTo.focus();
-      };
+        const closeModal = () => {
+          if (modal.hidden) return;
+          modal.hidden = true;
+          document.body.classList.remove("modal-open");
+          if (returnFocusTo && typeof returnFocusTo.focus === "function") returnFocusTo.focus();
+        };
 
-      openButton.addEventListener("click", openModal);
-      closeButton.addEventListener("click", closeModal);
-      modal.addEventListener("click", (event) => {
-        if (event.target === modal) closeModal();
-      });
-      document.addEventListener("keydown", (event) => {
-        if (modal.hidden) return;
-        if (event.key === "Escape") {
-          event.preventDefault();
-          closeModal();
-          return;
-        }
-        if (event.key === "Tab") {
-          const focusable = getFocusable();
-          if (!focusable.length) {
+        openButton.addEventListener("click", openModal);
+        closeButton.addEventListener("click", closeModal);
+        modal.addEventListener("click", (event) => {
+          if (event.target === modal) closeModal();
+        });
+        document.addEventListener("keydown", (event) => {
+          if (modal.hidden) return;
+          if (event.key === "Escape") {
             event.preventDefault();
-            dialog.focus();
+            closeModal();
             return;
           }
-          const first = focusable[0];
-          const last = focusable[focusable.length - 1];
-          if (event.shiftKey && (document.activeElement === first || document.activeElement === dialog)) {
-            event.preventDefault();
-            last.focus();
-          } else if (!event.shiftKey && (document.activeElement === last || document.activeElement === dialog)) {
-            event.preventDefault();
-            first.focus();
+          if (event.key === "Tab") {
+            const focusable = getFocusable();
+            if (!focusable.length) {
+              event.preventDefault();
+              dialog.focus();
+              return;
+            }
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+            if (event.shiftKey && (document.activeElement === first || document.activeElement === dialog)) {
+              event.preventDefault();
+              last.focus();
+            } else if (!event.shiftKey && (document.activeElement === last || document.activeElement === dialog)) {
+              event.preventDefault();
+              first.focus();
+            }
           }
-        }
+        });
       });
     })();
   </script>
