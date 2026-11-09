@@ -139,6 +139,38 @@
     .document-card .button { margin-top: auto; padding-inline: 16px; font: inherit; }
     .document-card .button:disabled { opacity: .62; cursor: not-allowed; transform: none; }
     .document-note { display: inline-block; margin-top: 2px; color: var(--red-light); font: 11px "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: .08em; }
+    .modal-open { overflow: hidden; }
+    .document-modal { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 24px; background: rgba(0,0,0,.78); backdrop-filter: blur(6px); }
+    .document-modal[hidden] { display: none; }
+    .document-dialog { width: min(100%, 880px); max-height: min(88vh, 900px); display: flex; flex-direction: column; overflow: hidden; border: 1px solid rgba(255,255,255,.14); border-radius: 12px; background: var(--surface); box-shadow: 0 24px 100px rgba(0,0,0,.65), 0 0 55px rgba(255,41,56,.10); }
+    .document-dialog-header { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 18px 24px; border-bottom: 1px solid var(--line); background: rgba(255,255,255,.02); }
+    .document-dialog-header h2 { margin: 0; font-size: 21px; letter-spacing: -.035em; }
+    .document-close { width: 40px; height: 40px; flex: 0 0 40px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 7px; background: rgba(255,255,255,.04); color: var(--text); font: 26px/1 "Manrope", sans-serif; cursor: pointer; transition: background .2s, border-color .2s; }
+    .document-close:hover, .document-close:focus-visible { border-color: rgba(255,41,56,.6); background: rgba(255,41,56,.12); outline: none; }
+    .document-dialog-body { overflow: auto; overscroll-behavior: contain; padding: 28px clamp(20px, 5vw, 56px) 42px; }
+    .portfolio-doc { max-width: 720px; margin-inline: auto; color: #e5e1e3; font-size: 15px; line-height: 1.75; overflow-wrap: anywhere; }
+    .portfolio-doc h3 { margin: 0; color: var(--text); font: 700 clamp(24px, 4vw, 34px)/1.15 "Exo 2", "Manrope", sans-serif; letter-spacing: -.04em; }
+    .portfolio-doc .doc-subtitle { display: block; margin-top: 7px; color: var(--red-light); font-size: 16px; font-weight: 650; }
+    .portfolio-doc .doc-contact { margin-top: 16px; color: var(--muted); font-size: 13px; line-height: 1.8; }
+    .portfolio-doc .doc-separator { height: 1.7em; margin: 7px 0; overflow: hidden; color: rgba(255,255,255,.25); font-family: "IBM Plex Mono", monospace; line-height: 1.7em; white-space: nowrap; }
+    .portfolio-doc h4 { margin: 20px 0 8px; color: var(--red-light); font: 700 14px/1.4 "IBM Plex Mono", monospace; letter-spacing: .045em; }
+    .portfolio-doc p { margin: 0 0 10px; }
+    .portfolio-doc ul { margin: 5px 0 12px; padding-left: 23px; }
+    .portfolio-doc li { margin: 4px 0; padding-left: 2px; }
+    .portfolio-doc a { color: var(--red-light); text-decoration: underline; text-decoration-color: rgba(255,89,100,.45); text-underline-offset: 3px; }
+    .portfolio-doc a:hover { color: #fff; text-decoration-color: currentColor; }
+    .portfolio-doc .doc-case { margin: 6px 0 12px; }
+    .portfolio-doc .doc-thanks { margin-top: 12px; font-weight: 650; }
+    @media (max-width: 560px) {
+      .document-modal { align-items: flex-end; padding: 0; }
+      .document-dialog { width: 100%; max-height: 94vh; max-height: 94dvh; border-radius: 14px 14px 0 0; }
+      .document-dialog-header { padding: 13px 17px; }
+      .document-dialog-header h2 { font-size: 18px; }
+      .document-dialog-body { padding: 21px 18px 34px; }
+      .portfolio-doc { font-size: 14px; line-height: 1.72; }
+      .portfolio-doc .doc-contact { font-size: 12px; }
+      .portfolio-doc h4 { font-size: 12px; }
+    }
     .education { padding: 68px 0 74px; background: transparent; }
     .edu-brand { width: 54px; height: 44px; flex: 0 0 54px; display: grid; place-items: center; overflow: hidden; border: 1px solid var(--line); border-radius: 7px; background: #fff; }
     .edu-logo { width: 100%; height: 100%; padding: 3px; object-fit: contain; }
@@ -313,7 +345,7 @@
             <span class="project-meta">Портфолио</span>
             <h3>Моё портфолио</h3>
             <p>Услуги, кейсы, инструменты, обучение и контакты — в одном документе.</p>
-            <button class="button" type="button" disabled aria-disabled="true">Посмотреть портфолио <span aria-hidden="true">↗</span></button>
+            <button class="button" id="open-portfolio-modal" type="button" aria-haspopup="dialog" aria-controls="portfolio-modal">Посмотреть портфолио <span aria-hidden="true">↗</span></button>
           </article>
           <article class="document-card">
             <span class="project-meta">Коммерческое предложение</span>
@@ -343,7 +375,125 @@
         </div>
       </div>
     </section>
-  </main></body>
+  </main>
+  <div class="document-modal" id="portfolio-modal" hidden>
+    <section class="document-dialog" role="dialog" aria-modal="true" aria-labelledby="portfolio-modal-title" tabindex="-1">
+      <header class="document-dialog-header">
+        <h2 id="portfolio-modal-title">Моё портфолио</h2>
+        <button class="document-close" type="button" aria-label="Закрыть портфолио">×</button>
+      </header>
+      <div class="document-dialog-body">
+        <article class="portfolio-doc">
+          <h3>АНДРЕЙ ЯЩЕНКО</h3>
+          <span class="doc-subtitle">Начинающий специалист по AI-инструментам и цифровому контенту</span>
+          <p class="doc-contact">📞 Телефон: +7 988 139-73-32&nbsp; | &nbsp;📧 Email: ayashenko49@gmail.com&nbsp; | &nbsp;💬 Telegram: @admiralnemo&nbsp; | &nbsp;📍 Геленджик</p>
+          <div class="doc-separator" aria-hidden="true">────────────────────────────────────────────────────────</div>
+
+          <h4>О ЧЁМ Я</h4>
+          <p>Изучаю инструменты искусственного интеллекта и применяю их на практике в работе с текстами, изображениями и простыми сайтами. Ищу стажировку, небольшие задачи и возможность получить практический опыт.</p>
+          <p>Начинающий специалист. Обучение и развитие практических навыков продолжаются.</p>
+          <div class="doc-separator" aria-hidden="true">────────────────────────────────────────────────────────</div>
+
+          <h4>МОИ УСЛУГИ</h4>
+          <p>🎯 Тексты и промпты</p>
+          <p>Создание и редактирование текстов, составление и улучшение промптов с помощью ИИ.</p>
+          <p>🎨 Изображения</p>
+          <p>Генерация и редактирование изображений, создание визуальных материалов для социальных сетей.</p>
+          <p>🌐 Простые сайты</p>
+          <p>Создание и доработка простых сайтов с помощью AI-инструментов. Начальный уровень.</p>
+          <div class="doc-separator" aria-hidden="true">────────────────────────────────────────────────────────</div>
+
+          <h4>КЕЙСЫ</h4>
+          <p class="doc-case">💻 Кейс 1. Личное портфолио Андрея Ященко <a href="https://tentoumushi-by.github.io/andrey-portfolio/" target="_blank" rel="noopener noreferrer">Открыть сайт</a></p>
+          <p>Задача: представить навыки, услуги и контактную информацию. Решение: создан сайт-портфолио с разделами о направлениях работы и способах связи.</p>
+          <p class="doc-case">🏍️ Кейс 2. «Вика — мотодевушка · Геленджик» <a href="https://tentoumushi-by.github.io/vika-gelendzhik/" target="_blank" rel="noopener noreferrer">Открыть сайт</a></p>
+          <p>Задача: представить активности и предложения в Геленджике. Решение: создан сайт с разделами о мотопрогулках, мотосессиях и SUP-сёрфинге.</p>
+          <div class="doc-separator" aria-hidden="true">────────────────────────────────────────────────────────</div>
+
+          <h4>ИНСТРУМЕНТЫ</h4>
+          <p>🤖 ChatGPT&nbsp; | &nbsp;🤖 DeepSeek&nbsp; | &nbsp;🎨 Dreamina</p>
+          <p>🎬 Wan2GP&nbsp; | &nbsp;💻 Codex</p>
+          <p>📚 Осваиваю: CapCut&nbsp; | &nbsp;ElevenLabs&nbsp; | &nbsp;Kimi</p>
+          <div class="doc-separator" aria-hidden="true">────────────────────────────────────────────────────────</div>
+
+          <h4>ОБРАЗОВАНИЕ И СЕРТИФИКАЦИЯ</h4>
+          <p>🎓 Обучение по направлению «Оператор ИИ» — в процессе</p>
+          <div class="doc-separator" aria-hidden="true">────────────────────────────────────────────────────────</div>
+
+          <h4>ПОЧЕМУ Я</h4>
+          <ul>
+            <li>✅ Честно обозначаю свой текущий уровень и возможности</li>
+            <li>✅ Открыт к стажировкам и небольшим практическим задачам</li>
+            <li>✅ Готов учиться, разбираться в новых задачах и принимать обратную связь</li>
+            <li>✅ Заинтересован в сотрудничестве с более опытными специалистами</li>
+          </ul>
+          <div class="doc-separator" aria-hidden="true">────────────────────────────────────────────────────────</div>
+
+          <h4>СВЯЗАТЬСЯ</h4>
+          <p>📞 Телефон: +7 988 139-73-32&nbsp; | &nbsp;📧 Email: ayashenko49@gmail.com&nbsp; | &nbsp;💬 Telegram: @admiralnemo</p>
+        </article>
+      </div>
+    </section>
+  </div>
+  <script>
+    (() => {
+      const modal = document.getElementById("portfolio-modal");
+      const openButton = document.getElementById("open-portfolio-modal");
+      const closeButton = modal.querySelector(".document-close");
+      const dialog = modal.querySelector('[role="dialog"]');
+      let returnFocusTo = null;
+
+      const getFocusable = () => Array.from(
+        dialog.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])')
+      ).filter((element) => !element.hasAttribute("hidden") && element.getAttribute("aria-hidden") !== "true");
+
+      const openModal = () => {
+        returnFocusTo = document.activeElement;
+        modal.hidden = false;
+        document.body.classList.add("modal-open");
+        closeButton.focus();
+      };
+
+      const closeModal = () => {
+        if (modal.hidden) return;
+        modal.hidden = true;
+        document.body.classList.remove("modal-open");
+        if (returnFocusTo && typeof returnFocusTo.focus === "function") returnFocusTo.focus();
+      };
+
+      openButton.addEventListener("click", openModal);
+      closeButton.addEventListener("click", closeModal);
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal) closeModal();
+      });
+      document.addEventListener("keydown", (event) => {
+        if (modal.hidden) return;
+        if (event.key === "Escape") {
+          event.preventDefault();
+          closeModal();
+          return;
+        }
+        if (event.key === "Tab") {
+          const focusable = getFocusable();
+          if (!focusable.length) {
+            event.preventDefault();
+            dialog.focus();
+            return;
+          }
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+          if (event.shiftKey && (document.activeElement === first || document.activeElement === dialog)) {
+            event.preventDefault();
+            last.focus();
+          } else if (!event.shiftKey && (document.activeElement === last || document.activeElement === dialog)) {
+            event.preventDefault();
+            first.focus();
+          }
+        }
+      });
+    })();
+  </script>
+</body>
 </html>
 
 
