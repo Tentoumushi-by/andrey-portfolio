@@ -131,6 +131,14 @@
     .job-role { color: var(--red-light); font-size: 12px; margin-top: 5px; }
     .job-date { color: #888288; font-size: 11px; white-space: nowrap; }
     .job p { color: #aaa4a8; font-size: 13px; line-height: 1.62; margin: 17px 0 0; }
+    .documents { padding: 78px 0 84px; }
+    .document-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .document-card { display: flex; flex-direction: column; align-items: flex-start; min-height: 250px; padding: 25px 24px; border: 1px solid var(--line); border-radius: 10px; background: linear-gradient(135deg, rgba(255,41,56,.09), rgba(255,255,255,.02) 55%); }
+    .document-card h3 { margin: 12px 0 8px; font: 600 23px/1.2 "Exo 2", "Manrope", sans-serif; letter-spacing: -.04em; }
+    .document-card p { margin: 0; color: #c3bdc0; font-size: 14px; line-height: 1.7; }
+    .document-card .button { margin-top: auto; padding-inline: 16px; font: inherit; }
+    .document-card .button:disabled { opacity: .62; cursor: not-allowed; transform: none; }
+    .document-note { display: inline-block; margin-top: 2px; color: var(--red-light); font: 11px "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: .08em; }
     .education { padding: 68px 0 74px; background: transparent; }
     .edu-brand { width: 54px; height: 44px; flex: 0 0 54px; display: grid; place-items: center; overflow: hidden; border: 1px solid var(--line); border-radius: 7px; background: #fff; }
     .edu-logo { width: 100%; height: 100%; padding: 3px; object-fit: contain; }
@@ -191,6 +199,9 @@
       .service { min-height: 0; padding: 17px 15px; }
       .service h3 { margin-top: 12px; }
       .projects { padding-block: 62px; }
+      .document-grid { grid-template-columns: 1fr; }
+      .document-card { min-height: 0; padding: 20px 17px; }
+      .document-card .button { margin-top: 20px; }
       .project-card { padding: 19px 16px; }
       .skill { min-height: 145px; padding: 16px 14px; }
       .skill h3 { font-size: 14px; margin-top: 15px; }
@@ -292,6 +303,26 @@
           <div><span class="project-meta">Учебный проект · AI-инструменты</span><h3>Библиотека промптов</h3></div>
           <div class="project-copy"><p>Собрал и отработал в ходе профессионального обучения библиотеку из 32 проверенных промптов для текстов, анализа, документов и маркетинга.</p><div class="project-tags"><span>32 промпта</span><span>Тексты</span><span>Анализ</span><span>Документы</span><span>Маркетинг</span></div></div>
         </article>
+      </div>
+    </section>
+    <section class="section" id="documents">
+      <div class="wrap documents">
+        <div class="section-heading"><div><span class="section-label">Документы</span><h2>Материалы обо мне и моей работе</h2></div><p class="section-note">Подробная информация о моих навыках и учебный пример предложения.</p></div>
+        <div class="document-grid">
+          <article class="document-card">
+            <span class="project-meta">Портфолио</span>
+            <h3>Моё портфолио</h3>
+            <p>Услуги, кейсы, инструменты, обучение и контакты — в одном документе.</p>
+            <button class="button" type="button" disabled aria-disabled="true">Посмотреть портфолио <span aria-hidden="true">↗</span></button>
+          </article>
+          <article class="document-card">
+            <span class="project-meta">Коммерческое предложение</span>
+            <h3>Предложение для мототуризма</h3>
+            <span class="document-note">Учебный пример — не реальный заказ</span>
+            <p>Образец с этапами работы, сроками, стоимостью и условиями.</p>
+            <button class="button" type="button" disabled aria-disabled="true">Посмотреть предложение <span aria-hidden="true">↗</span></button>
+          </article>
+        </div>
       </div>
     </section>
     <section class="section">
