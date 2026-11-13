@@ -52,7 +52,7 @@
     .hero-nav { justify-content: flex-end; flex-wrap: wrap; gap: 8px; width: auto; max-width: 100%; }
     .topbar .hero-nav { width: min(var(--max), calc(100% - 64px)); margin-inline: auto; }
 .hero-nav a { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; padding: 0 13px; border-radius: 7px; background: var(--red); color: #fff; font-size: 13px; font-weight: 700; transition: transform .2s, background .2s; }
-.hero-nav a:hover { transform: translateY(-2px); background: #ff4754; color: #fff; }
+@media (hover: hover) and (pointer: fine) {\n      .hero-nav a:hover { transform: translateY(-2px); background: #ff4754; color: #fff; }\n      .button:hover { transform: translateY(-2px); background: #ff4754; }\n    }
     .nav a { transition: color .2s; }
     .nav a:hover, .contact-card:hover { color: var(--red-light); }
     .hero { min-height: 660px; display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 52px; padding-block: 76px 90px; position: relative; isolation: isolate; }
@@ -68,7 +68,7 @@
     .availability i { width: 7px; height: 7px; border-radius: 50%; background: var(--red); box-shadow: 0 0 13px rgba(255,41,56,.9); }
     .hero-actions { display: flex; align-items: center; gap: 22px; margin-top: 34px; }
     .button { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 51px; padding: 0 21px; border-radius: 7px; background: var(--red); color: #fff; font-weight: 700; font-size: 14px; transition: transform .2s, background .2s; }
-    .button:hover { transform: translateY(-2px); background: #ff4754; }
+
     .text-link { color: #c5c0c2; font-size: 14px; }
     .text-link span { color: var(--red-light); margin-left: 5px; }
     .hero-art { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; min-height: 420px; }
@@ -180,13 +180,13 @@
       .project-card { grid-template-columns: 1fr; gap: 15px; }
       .contacts { grid-template-columns: 1fr; gap: 31px; }
     }
-    @media (max-width: 560px) {
+    @media (max-width: 560px) {\n      html { scroll-behavior: auto; }
       .wrap { width: calc(100% - 36px); }
       .topbar { height: auto; }
       .brand { font-size: 14px; gap: 9px; }
       .brand-mark { width: 31px; height: 31px; }
       .nav { gap: 16px; font-size: 12px; }
-      .nav a:last-child { display: none; }
+      .hero-nav { justify-content: center; gap: 7px; }\n      .hero-nav a { min-height: 36px; padding-inline: 9px; border: 1px solid var(--line); background: rgba(255,255,255,.05); color: var(--text); font-size: 10px; transition: none; }\n      .hero-nav a:hover, .hero-nav a:active { transform: none; border-color: var(--line); background: rgba(255,255,255,.05); color: var(--text); }\n      .button:hover, .button:active { transform: none; background: var(--red); }
       .hero { padding-top: 56px; gap: 21px; }
       h1 { font-size: clamp(51px, 14vw, 68px); margin-top: 22px; }
       .lead { font-size: 16px; }
@@ -199,7 +199,7 @@
 
       .about, .skills, .experience { padding-block: 68px; }
       .about { padding-block: 46px; }
-      .about-photo { width: 112px; max-width: 36%; margin: 4px 15px 9px 0; }
+      .about-photo { width: 112px; max-width: 36%; margin: 4px 15px 9px 0; }\n      .about-copy .section-label, .about-copy h2 { clear: both; display: block; }\n      .about-copy h2 { max-width: none; margin-top: 10px; line-height: 1.12; letter-spacing: -.045em; }
       .about-copy p { font-size: 16px; }
       .facts { grid-template-columns: 1fr; }
       .fact { display: flex; align-items: center; gap: 13px; padding: 13px 15px; }
